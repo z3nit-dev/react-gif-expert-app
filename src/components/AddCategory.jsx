@@ -1,7 +1,7 @@
 import { useState } from "react"
 import PropTypes from 'prop-types'
 
-export const AddCategory = ({ onNewCategorie })=>{
+export const AddCategory = ({ onNewCategory })=>{
     const [ inputValue, setInputValue ] = useState('')
     
     const onInputChange = (event)=>{
@@ -11,12 +11,12 @@ export const AddCategory = ({ onNewCategorie })=>{
     const onSubmit = (event)=>{
         event.preventDefault()
         if (inputValue.trim().length <= 1) return;
-        onNewCategorie(inputValue)
+        onNewCategory(inputValue)
         setInputValue('')
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form aria-label="form" onSubmit={onSubmit}>
             <input type="text" placeholder="Buscar categorias" value={inputValue} onChange={onInputChange}/>
         </form>
         
@@ -24,5 +24,5 @@ export const AddCategory = ({ onNewCategorie })=>{
 }
 
 AddCategory.propTypes = {
-    onNewCategorie: PropTypes.func
+    onNewCategory: PropTypes.func.isRequired
 }
